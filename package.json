@@ -30,8 +30,8 @@
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
     "build": "tsc",
     "start": "npm run migrate && node dist/app.js",
-    "migrate": "knex --knexfile knexfile.ts migrate:latest",
-    "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback",
+    "migrate": "knex --knexfile knexfile.ts migrate:latest --env production",
+    "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback --env production",
     "test": "jest --runInBand --forceExit"
   },
   "jest": {
