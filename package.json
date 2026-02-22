@@ -29,7 +29,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
     "build": "tsc",
-    "migrate": "ts-node -e \"require('dotenv').config()\" node_modules/.bin/knex --knexfile knexfile.ts migrate:latest --env production",
+    "migrate": "knex --knexfile knexfile.ts migrate:latest --env production",
     "start": "npm run build && npm run migrate && node dist/app.js",
     "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback --env production",
     "test": "jest --runInBand --forceExit"
