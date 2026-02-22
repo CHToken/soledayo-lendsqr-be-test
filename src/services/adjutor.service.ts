@@ -12,6 +12,11 @@ export const AdjutorService = {
                     },
                 }
             );
+            // Handle mock responses gracefully when the adjunct API is in test mode
+            if (response.data && response.data['mock-response']) {
+                return false;
+            }
+
             return response.data?.data !== null;
         } catch (error: any) {
             // 404 means user is not on the blacklist
