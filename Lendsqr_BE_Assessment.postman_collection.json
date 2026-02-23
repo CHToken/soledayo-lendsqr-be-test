@@ -1,0 +1,214 @@
+{
+    "info": {
+        "_postman_id": "03bb2486-d250-4228-a3f2-1aada345e69e",
+        "name": "Lendsqr BE Assessment",
+        "description": "API Collection for the Lendsqr Backend Engineer Assessment Wallet Service",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Register User (Success)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"johndoe123abc@gmail.com\",\n  \"phone\": \"08012345678\"\n}"
+                },
+                "url": {
+                    "raw": "https://soledayo-lendsqr-be-test.up.railway.app/users/register",
+                    "protocol": "https",
+                    "host": [
+                        "soledayo-lendsqr-be-test",
+                        "up",
+                        "railway",
+                        "app"
+                    ],
+                    "path": [
+                        "users",
+                        "register"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Register User (Blacklisted)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"Bad Actor\",\n  \"email\": \"blacklisted@test.com\",\n  \"phone\": \"08055555555\"\n}"
+                },
+                "url": {
+                    "raw": "https://soledayo-lendsqr-be-test.up.railway.app/users/register",
+                    "protocol": "https",
+                    "host": [
+                        "soledayo-lendsqr-be-test",
+                        "up",
+                        "railway",
+                        "app"
+                    ],
+                    "path": [
+                        "users",
+                        "register"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Login User",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"email\": \"johndoe123abc@gmail.com\"\n}"
+                },
+                "url": {
+                    "raw": "https://soledayo-lendsqr-be-test.up.railway.app/auth/login",
+                    "protocol": "https",
+                    "host": [
+                        "soledayo-lendsqr-be-test",
+                        "up",
+                        "railway",
+                        "app"
+                    ],
+                    "path": [
+                        "auth",
+                        "login"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Fund Wallet",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"amount\": 5000\n}"
+                },
+                "url": {
+                    "raw": "https://soledayo-lendsqr-be-test.up.railway.app/wallet/fund",
+                    "protocol": "https",
+                    "host": [
+                        "soledayo-lendsqr-be-test",
+                        "up",
+                        "railway",
+                        "app"
+                    ],
+                    "path": [
+                        "wallet",
+                        "fund"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Transfer Funds",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"amount\": 1500,\n  \"recipientEmail\": \"another_user@gmail.com\"\n}"
+                },
+                "url": {
+                    "raw": "https://soledayo-lendsqr-be-test.up.railway.app/wallet/transfer",
+                    "protocol": "https",
+                    "host": [
+                        "soledayo-lendsqr-be-test",
+                        "up",
+                        "railway",
+                        "app"
+                    ],
+                    "path": [
+                        "wallet",
+                        "transfer"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Withdraw Funds",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"amount\": 1000\n}"
+                },
+                "url": {
+                    "raw": "https://soledayo-lendsqr-be-test.up.railway.app/wallet/withdraw",
+                    "protocol": "https",
+                    "host": [
+                        "soledayo-lendsqr-be-test",
+                        "up",
+                        "railway",
+                        "app"
+                    ],
+                    "path": [
+                        "wallet",
+                        "withdraw"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "token",
+            "value": "replace_with_jwt_token_from_login_response"
+        }
+    ]
+}
