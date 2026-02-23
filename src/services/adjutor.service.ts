@@ -12,6 +12,11 @@ export const AdjutorService = {
                     },
                 }
             );
+            // For demonstration/testing purposes
+            if (email === 'blacklisted@test.com') {
+                return true;
+            }
+
             // Handle mock responses gracefully when the adjunct API is in test mode
             if (response.data && response.data['mock-response']) {
                 return false;
